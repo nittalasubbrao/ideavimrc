@@ -1,0 +1,150 @@
+" Source your .vimrc
+source ~/.vimrc
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+let mapleader=" "
+" Do incremental searching.
+set incsearch
+
+"g:qs_primary_color
+"g:qs_secondary_color
+
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+
+let g:sneak#label = 1
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+set hidden
+set hlsearch
+set exd
+set noswapfile
+set sneak
+set quickscope
+set ignorecase
+set clipboard+=unnamed
+set clipboard+=ideaput
+set NERDTree
+set surround
+set commentary
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+nnoremap \e :e /c/Users/subbarao.v/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
+nnoremap <c-f> : action GotoFile<CR>
+nnoremap <TAB> : action PreviousTab<CR>
+inoremap jk  <Esc>
+nnoremap <leader>zc :action CollapseRegion<cr>
+nnoremap <leader>zo :action ExpandRegion<cr>
+"map f <Plug>Sneak_s
+"map F <Plug>Sneak_S
+nnoremap ; :
+vnoremap ; :
+nnoremap <c-e> : action RecentFiles<CR>
+nnoremap <c-z> : action ToggleDistractionFreeMode<CR>
+nnoremap <leader>t  : action Terminal.OpenInTerminal<CR>
+nnoremap <c-\> : action SplitVertically<CR>
+nnoremap <c--> : action Splitorizontally<CR>
+nnoremap <c-=> :action UnsplitAll<CR>
+nnoremap <c-m> : action MoveEditorToOppositeTabGroup<CR>
+nnoremap <c-r> : action MoveTabRight<CR>
+nnoremap <c-i> : action ImportModule<CR>
+nnoremap <leader>d : set nohls<CR>
+nnoremap <leader>c : set hls<CR>
+nnoremap <c-k> : action NewClass<CR>
+nnoremap <c-p> :action JumpToLastWindow<CR>
+nnoremap <c-x> :action HideAllWindows<CR>
+" plugins
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
+
+nnoremap <C-W>k <Up>
+nnoremap <C-W>j <Down>
+
+nnoremap <leader>n : NERDTreeFocus<CR>
+nnoremap <c-h> : NERDTreeFind<cr>
+nnoremap <c-l> : NERDTreeToggle<cr>
+nnoremap <c-j> : NERDTreeClose<cr>
+nnoremap <c-k> : NERDTreeRefreshRoot<cr>
+
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <s-TAB> :action NextTab<CR>
+nnoremap <Leader>en :action EditSourceInNewWindow<CR>
+nnoremap <Leader>n :action NextWindow<CR>
+nnoremap <Leader>q :action CloseContent<CR>
+nnoremap <Leader>qa :action CloseAllEditors<CR>
+nnoremap <Leader>ro :action OpenInRightSplit<CR>
+
+map mc <A-n>
+map mx <A-x>
+map mp <A-p>
+
+""" Editing source code
+set ideajoin
+set idearefactormode=keep
+vnoremap < <gv
+vnoremap > >gv
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+nnoremap <leader>l :action RecentLocations<CR>
+nnoremap <leader>h  :action LocalHistory.ShowHistory<CR>
+
+" Code refactoring
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gt :action GotoTest<CR>
+nnoremap ge :action GotoNextError<CR>
+nnoremap gE :action GotoPreviousError<CR>
+nnoremap ff :action SearchEverywhere<CR>
+nnoremap fc :action ReformatCode<CR>
+nnoremap ;r :action RenameElement<CR>
+nnoremap ;t :action ActivateTerminalToolWindow<CR>
+nnoremap ;b :action Vcs.RollbackChangedLines<CR>
+nnoremap ;f :action RenameFile<CR>
+nnoremap ;h :action HideAllWindows<CR>
+nnoremap ;o :action OptimizeImports<CR>
+nnoremap ;c :action CloseAllEditorsButActive<CR>
+nnoremap ;e :action CloseEditor<CR>
+nnoremap <space><space> :action ShowErrorDescription<CR>
+nnoremap ,u :action Rerun<CR>
+nnoremap ,r :action RunClass<CR>
+nnoremap ,R :action Run<CR>
+nnoremap ,d :action DebugClass<CR>
+nnoremap ,D :action Debug<CR>
+
+" movement  of lines
+nnoremap <S-Up> :m-2<CR>
+nnoremap <S-Down> :m+<CR>
+inoremap <S-Up> <Esc>:m-2<CR>
+inoremap <S-Down> <Esc>:m+<CR>
+
+nnoremap ,b :action ToggleLineBreakpoint<CR>
+nnoremap ,d :action ContextDebug<CR>
+nnoremap ,n :action ActivateDebugToolWindow<CR>
+nnoremap <leader>n :action NewClass<CR>
+nnoremap <leader>ct :action ShowIntentionActions<CR>
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+nnoremap <Leader>= :action ReformatCode<CR>
+nnoremap <leader>o :action OptimizeImports<CR>
+nnoremap <leader>mt :action MoveToOppositeTabGroup<CR>
+nnoremap <leader>rc :action ReformatCode<CR>
+nnoremap <leader>hw :action HideActiveWindow<CR>
+nnoremap <leader>de :action $Delete<CR>
