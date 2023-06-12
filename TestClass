@@ -1,0 +1,38 @@
+package com.example.demo90;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.core.io.ClassPathResource;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+
+class StaticResponseV2Test {
+
+    @Mock
+    ClassPathResource mockedResource;
+
+
+    @Test
+    void getBindings_positive() throws IOException {
+
+        InputStream mockInputStream = Mockito.mock(InputStream.class);
+
+        Mockito.when(mockedResource.getInputStream()).thenReturn(mockInputStream);
+
+        StaticResponseV2 staticResponseV2 = new StaticResponseV2();
+
+        BindingResponseV2 bindings = staticResponseV2.getBindings();
+
+        Assert.assertNotNull(bindings);
+
+
+    }
+}
